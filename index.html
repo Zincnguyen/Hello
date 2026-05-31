@@ -64,7 +64,7 @@
     .open-btn:hover{
       transform:scale(1.1);
     }
-
+    
     /* Khung thư */
     .letter-box{
       position:absolute;
@@ -186,14 +186,23 @@
         opacity:1;
       }
     }
-
+    
   </style>
 </head>
+<script>
 
+document.addEventListener("click", () => {
+
+  document.getElementById("bgMusic").play();
+
+}, { once: true });
+
+</script>
 <body>
-
+  <audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
   <h1>🎂 Happy Birthday! 🎂</h1>
-
   <button class="open-btn" onclick="openLetter()">
     💌 Mở thư
   </button>
