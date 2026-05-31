@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      overflow:hidden;
+      background:black;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-direction:column;
+      position:relative;
+    }
+
+    /* Happy Birthday */
+    h1{
+      color:white;
+      font-size:70px;
+      text-shadow:
+        0 0 10px #ff69b4,
+        0 0 20px #ff69b4,
+        0 0 40px #ff69b4;
+      animation:glow 2s infinite alternate;
+      z-index:10;
+      text-align:center;
+    }
+
+    @keyframes glow{
+      from{
+        transform:scale(1);
+      }
+      to{
+        transform:scale(1.08);
+      }
+    }
+
+    /* Nút mở thư */
+    .open-btn{
+      margin-top:25px;
+      padding:14px 30px;
+      border:none;
+      border-radius:40px;
+      background:linear-gradient(45deg,#ff69b4,#ffb6c1);
+      color:white;
+      font-size:20px;
+      cursor:pointer;
+      box-shadow:0 0 20px rgba(255,105,180,0.7);
+      transition:0.3s;
+      z-index:10;
+    }
+
+    .open-btn:hover{
+      transform:scale(1.1);
+    }
+
+    /* Khung thư */
+    .letter-box{
+      position:absolute;
+      width:420px;
+      max-width:90%;
+      background:white;
+      color:#333;
+      padding:30px;
+      border-radius:25px;
+      text-align:center;
+      box-shadow:0 0 30px rgba(255,255,255,0.3);
+      display:none;
+      z-index:20;
+      animation:showLetter 0.5s ease;
+    }
+
+    @keyframes showLetter{
+      from{
+        opacity:0;
+        transform:scale(0.5);
+      }
+      to{
+        opacity:1;
+        transform:scale(1);
+      }
+    }
+
+    .letter-box h2{
+      margin-bottom:15px;
+      color:#ff69b4;
+    }
+
+    .letter-box textarea{
+      width:100%;
+      height:280280px;
+      border:2px solid #ffc0cb;
+      border-radius:15px;
+      padding:15px;
+      resize:none;
+      font-size:16px;
+      outline:none;
+    }
+
+    .close-btn{
+      margin-top:15px;
+      padding:10px 20px;
+      border:none;
+      border-radius:20px;
+      background:#ff69b4;
+      color:white;
+      cursor:pointer;
+      font-size:16px;
+    }
+
+    /* Trái tim bay */
+    .heart{
+      position:absolute;
+      color:pink;
+      font-size:20px;
+      animation:floatUp linear forwards;
+      opacity:0.8;
+    }
+
+    @keyframes floatUp{
+      0%{
+        transform:translateY(0) scale(1);
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-100vh) scale(1.8);
+        opacity:0;
+      }
+    }
+
+    /* Popup ảnh */
+    .popup-img{
+      position:absolute;
+      width:150px;
+      height:150px;
+      border-radius:20px;
+      object-fit:cover;
+      animation:popup 6s linear forwards;
+      box-shadow:0 0 20px rgba(255,255,255,0.5);
+    }
+
+    @keyframes popup{
+      0%{
+        transform:scale(0) rotate(0deg);
+        opacity:0;
+      }
+      15%{
+        transform:scale(1) rotate(5deg);
+        opacity:1;
+      }
+      85%{
+        opacity:1;
+      }
+      100%{
+        transform:scale(0.5) rotate(-10deg);
+        opacity:0;
+      }
+    }
+
+    /* Sao lấp lánh */
+    .star{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:white;
+      border-radius:50%;
+      animation:twinkle 2s infinite;
+    }
+
+    @keyframes twinkle{
+      0%,100%{
+        opacity:0.2;
+      }
+      50%{
+        opacity:1;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>🎂 Happy Birthday! 🎂</h1>
+
+  <button class="open-btn" onclick="openLetter()">
+    💌 Mở thư
+  </button>
+
+  <!-- Khung thư -->
+  <div class="letter-box" id="letterBox">
+
+    <h2>Gửi đến Khả Hăn :33</h2>
+    <p text-align: justify>Chúc bạn khả hăn sinh nhật vui vẻ nha, t tính gửi cho m cái này ngay sinh nhật cơ nhưng mà t hong ngờ làm cái này lâu cỡ v T.T .</p><br>
+    <p text-align: justify>Đây là sinh nhật lần thứ 18 của m, và cũng là lần sinh nhật quan trọng nhất của cuộc đời mỗi con người. Nó đánh dấu sự trưởng thành của m, tvinh chúc Khả Hân tuổi mới trưởng thành hơn, chín chắn hơn và thành công hơn trong con đường phía trước. Nếu có gặp bất kì khó khăn gì thì m cũng phải nhớ còn có t giúp nhe!!</p>
+    <br>
+
+    <button class="close-btn" onclick="closeLetter()">
+      Đóng
+    </button>
+
+  </div>
+
+  <script>
+
+    // Mở thư
+    function openLetter(){
+      document.getElementById("letterBox").style.display = "block";
+    }
+
+    // Đóng thư
+    function closeLetter(){
+      document.getElementById("letterBox").style.display = "none";
+    }
+
+    // Trái tim bay
+    function createHeart(){
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+
+      heart.innerHTML = "💖";
+
+      heart.style.left = Math.random() * window.innerWidth + "px";
+
+      heart.style.top = window.innerHeight + "px";
+
+      heart.style.fontSize = Math.random() * 30 + 20 + "px";
+
+      heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },6000);
+    }
+
+    setInterval(createHeart,300);
+
+    //sao lấp lánh
+    for(let i=0;i<100;i++){
+
+      const star = document.createElement("div");
+
+      star.classList.add("star");
+
+      star.style.left = Math.random()*100 + "vw";
+
+      star.style.top = Math.random()*100 + "vh";
+
+      star.style.animationDuration = Math.random()*3 + 1 + "s";
+
+      document.body.appendChild(star);
+    }
+
+    // Danh sách ảnh popup
+    const images = [
+      "anh1.jpg",
+      "anh2.jpg",
+      "anh3.jpg",
+      "anh4.jpg",
+      "anh5.jpg"
+    ];
+
+    // Popup ảnh
+    function createPopupImage(){
+
+      const img = document.createElement("img");
+
+      img.classList.add("popup-img");
+
+      img.src = images[Math.floor(Math.random()*images.length)];
+
+      img.style.left =
+        Math.random() * (window.innerWidth - 150) + "px";
+
+      img.style.top =
+        Math.random() * (window.innerHeight - 150) + "px";
+
+      document.body.appendChild(img);
+
+      setTimeout(()=>{
+        img.remove();
+      },6000);
+    }
+
+    setInterval(createPopupImage,1000);
+
+  </script>
+
+</body>
+</html>
